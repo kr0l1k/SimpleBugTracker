@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using React.AspNet;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using DBReprository;
 
 namespace SimpleBugTracker
 {
@@ -25,6 +29,8 @@ namespace SimpleBugTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>();
+            services.AddScoped<IBugTrackerRepository>(provider => new BugTrackerRepository(Configuration.GetConnectionString("DefaultConnection"), provider.GetService<IRepositoryContextFactory>())); 
             //add react features to the project
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
             services.AddReact();
@@ -40,7 +46,8 @@ namespace SimpleBugTracker
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
+            
             //call react services
             app.UseReact(config => { });
             app.UseDefaultFiles();

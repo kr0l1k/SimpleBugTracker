@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using SimpleBugTracker.Models;
+using ModelsRepository;
+using DBReprository;
+using System.Threading.Tasks;
 
 namespace SimpleBugTracker.Controllers
 {
@@ -12,30 +14,18 @@ namespace SimpleBugTracker.Controllers
         public class ValuesController : Controller
         {
             static readonly List<User> _users;
-            static ValuesController()
+            IBugTrackerRepository _blogRepository;
+
+            public ValuesController(IBugTrackerRepository blogRepository)
             {
-                _users = new List<User>
-            {
-                new User { FirstName="S", SecondName="S", Login = "Krolik", Password="krolik"},
-                new User {  FirstName="S", SecondName="S", Login = "Krolik1", Password="krolik" },
-            };
+                _blogRepository = blogRepository;
             }
+
+            [Route("page")]
             [HttpGet]
-            public IEnumerable<User> Get()
+            public async Task<List<Bug>> GetBugs()
             {
-                return _users;
-            }
-
-            [HttpPost]
-            public IActionResult LogIn([FromBody]User phone)
-            {
-                return Ok(phone);
-            }
-
-            [HttpDelete("{id}")]
-            public IActionResult Delete(string id)
-            {
-                return Ok(id);
+                return await _blogRepository.GetBugs();
             }
         }
     }
