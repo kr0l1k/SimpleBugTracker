@@ -12,11 +12,32 @@
 
 /* Keep the nav menu independent of scrolling and on top of other items */
 .main-nav {
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
+    background-color:lightslategray;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
 }
 
 @media (max-width: 767px) {
@@ -27,7 +48,7 @@
 @media (min-width: 768px) {
     /* On small screens, convert the nav menu to a vertical sidebar */
     .col {
-        display: inline-block;
+        display: inline;
         vertical-align: top;
     }
 
