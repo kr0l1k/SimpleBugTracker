@@ -38,16 +38,14 @@ export class NavMenu extends React.Component<{}, {}> {
         //</div>;
         return <div className='main-nav'>
             <ul className='nav navbar-nav'>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#news">News</a></li>
-                <li className="dropdown">
-                    <a href="javascript:void(0)" className="dropbtn">Dropdown</a>
-                    <div className="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </li>
+                <li> <NavLink to={'/addBug'} activeClassName='active'>
+                                 New bug
+                     </NavLink></li>
+                <li><NavLink to={'/taskBoard'} activeClassName='active'>
+                                 Task board
+                     </NavLink></li>
+                <li><a href="#news">Users</a></li>
+                <li><a href="#logout">Log out</a></li>
             </ul>
         </div>;
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-interface CounterState {
+interface BugCreate {
     currentCount: number;
 }
 
-export class Counter extends React.Component<RouteComponentProps<{}>, CounterState> {
+export class BugCreater extends React.Component<RouteComponentProps<{}>, BugCreate> {
     constructor() {
         super();
         this.state = { currentCount: 0 };
