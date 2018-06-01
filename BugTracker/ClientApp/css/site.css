@@ -53,27 +53,33 @@ html[xmlns] .clearfix {
     }
 
     body {
-
     }
 
     .nav {
-        display: inline;
         width: 100%;
     }
 
-    .main-nav {
-
-        background-color: gray;
-    }
-
-    .main-nav .navbar ul {
+    .main-nav ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
         overflow: hidden;
+        background-color: #333;
     }
 
-    .main-nav .navbar li {
+    .main-nav ul li {
         float: left;
-    }     
+    }
+
+        .main-nav ul li:last-child {
+            float: right
+        }
+
+    .main-nav ul li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
 }

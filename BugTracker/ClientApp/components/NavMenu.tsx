@@ -37,7 +37,7 @@ export class NavMenu extends React.Component<{}, {}> {
         //    </div>
         //</div>;
         return <div className='main-nav'>
-            <ul className='nav navbar-nav'>
+            <ul >
                 <li> <NavLink to={'/addBug'} activeClassName='active'>
                                  New bug
                      </NavLink></li>
